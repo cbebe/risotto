@@ -5,7 +5,7 @@
 <meta charset="UTF-8"/>
 {{ if .Site.Params.noindex }}<meta name="robots" content="noindex" /> {{ end }}
 
+{{ $options := (dict "transpiler" "dartsass" "outputStyle" "compressed")}}
 <!-- risotto theme -->
-<link rel="stylesheet" href="{{ printf "css/palettes/%s.css" (.Site.Params.theme.palette | default "base16-dark") | absURL }}">
-<link rel="stylesheet" href="{{ "css/risotto.css" | absURL }}">
-<link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
+{{ $style := resources.Get "styles/risotto.scss" | resources.ExecuteAsTemplate "styles/risotto.scss" . | resources.ToCSS $options }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">

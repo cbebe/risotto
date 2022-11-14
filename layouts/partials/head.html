@@ -1,5 +1,9 @@
 <title>{{ with .Title }}{{ . }} &ndash; {{end}}{{ .Site.Title }}</title>
+{{ if .Params.description }}
+<meta name="description" content="{{ .Params.description }}">
+{{ else }}
 {{ with .Site.Params.about }}<meta name="description" content="{{ .description }}">{{ end }}
+{{ end }}
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8"/>

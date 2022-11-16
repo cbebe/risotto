@@ -212,3 +212,11 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+/* fix weird font sizes on mobile */
+span {
+    text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}

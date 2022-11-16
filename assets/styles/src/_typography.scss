@@ -10,15 +10,13 @@ body {
 }
 
 /* Headings */
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
     margin: 1.5rem 0 0 0;
     font-weight: 600;
+    &:before {
+        color: var(--muted);
+    }
 }
 
 h1+h2,
@@ -46,15 +44,6 @@ h4:before { content: "#### "; }
 h5:before { content: "##### "; }
 h6:before { content: "###### "; }
 
-h1:before, 
-h2:before, 
-h3:before, 
-h4:before, 
-h5:before, 
-h6:before {
-    color: var(--muted);
-}
-
 h1:first-child {
     margin-top: 0;
 }
@@ -65,41 +54,38 @@ p {
 }
 
 /* Links */
-
-a:link, a:visited {
-    color: var(--link);
+a {
+    &:link, &:visited {
+        color: var(--link);
+    }
+    &:hover, &:active, &.active {
+        color: var(--hover);
+    }
 }
-
-a:hover, a:active, a.active {
-    color: var(--hover);
-}
-
 /* Lists */
 ul {
     margin: 0 0 1.5rem 0;
     padding-left: 1.25rem;
+    li::marker {
+        content: '∗\00A0';
+        color: var(--muted);
+    }
 }
 
 ol {
     margin: 0 0 1.5rem 0;
     padding-left: 1.75rem;
+    li::marker {
+        color: var(--muted);
+    }
 }
 
-ul ul,
-ul ol,
-ol ul,
-ol ol {
-    margin: 0;
+ul, ol {
+    ul, ol {
+        margin: 0;
+    }
 }
 
-ul li::marker {
-    content: '∗\00A0';
-    color: var(--muted);
-}
-
-ol li::marker {
-    color: var(--muted);
-}
 
 dt {
   margin: 0;
@@ -123,13 +109,12 @@ dl {
 blockquote {
     position: relative;
     margin: 0 0 1.5rem 1.5rem;
-}
-
-blockquote::before {
-    position: absolute;
-    left: -1.5rem;
-    content: ">";
-    color: var(--muted);
+    &::before {
+        position: absolute;
+        left: -1.5rem;
+        content: ">";
+        color: var(--muted);
+    }
 }
 
 .twitter-tweet::before {
@@ -171,13 +156,11 @@ mark {
 hr {
     border: 0;
     margin-bottom: 1.5rem;
+    &:after {
+        content: '---';
+        color: var(--muted);
+    }
 }
-
-hr:after {
-    content: '---';
-    color: var(--muted);
-}
-
 
 /* Prevent super/sub from affecting line height */
 sup, sub {
@@ -199,9 +182,9 @@ table {
 th, td {
     padding: 0 .75rem;
     vertical-align: top;
-}
-th:first-child, td:first-child {
-    padding-left: 0;
+    &:first-child {
+        padding-left: 0;
+    }
 }
 th {
     text-align: inherit;

@@ -13,3 +13,4 @@
 <!-- risotto theme -->
 {{ $style := resources.Get "styles/risotto.scss" | resources.ExecuteAsTemplate "styles/risotto.scss" . | resources.ToCSS $options }}
 <link rel="stylesheet" href="{{ $style.Permalink }}">
+{{ if .Site.Params.rss }}<link rel="alternate" type="application/rss+xml" href="{{.Site.BaseURL }}/index.xml" title="{{ .Site.Title }}">{{ end }}

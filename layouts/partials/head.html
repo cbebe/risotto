@@ -9,8 +9,7 @@
 <meta charset="UTF-8"/>
 {{ if .Site.Params.noindex }}<meta name="robots" content="noindex" /> {{ end }}
 
-{{ $options := (dict "transpiler" "dartsass" "outputStyle" "compressed")}}
 <!-- risotto theme -->
-{{ $style := resources.Get "styles/risotto.scss" | resources.ExecuteAsTemplate "styles/risotto.scss" . | resources.ToCSS $options | resources.Fingerprint "sha512" }}
+{{ $style := resources.Get "styles/risotto.css" | resources.Minify | resources.Fingerprint "sha512" }}
 <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
 {{ if .Site.Params.rss }}<link rel="alternate" type="application/rss+xml" href="{{.Site.BaseURL }}/index.xml" title="{{ .Site.Title }}">{{ end }}
